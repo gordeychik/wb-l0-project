@@ -27,3 +27,5 @@ function accordAbsence() {
 button.addEventListener("click", accord);
 
 buttonAbsence.addEventListener("click", accordAbsence);
+
+console.log(123);
