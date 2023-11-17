@@ -4,34 +4,37 @@ const orderItems = document
   .querySelectorAll(".orderItem");
 
 orderItems.forEach((item) => {
+  const counter = item.querySelector(".counter__wrapper");
   const counterCount = item.querySelector(".counter__count");
   const addButton = item.querySelector(".counter__addButton");
   const subButton = item.querySelector(".counter__subButton");
   const priceAmount = item.querySelector(".orderItem__priceWrapperCash");
+  const initialPrice = +item
+    .querySelector("[data-initialPrice]")
+    .getAttribute("data-initialPrice");
 
   subButton.addEventListener("click", () => {
-    let currentCount = parseInt(counterCount.textContent);
+    let currentCount = parseInt(counterCount.innerHTML);
 
     if (currentCount > 0) {
-      counterCount.textContent = currentCount - 1;
+      counterCount.innerHTML = currentCount - 1;
       updateCounterStyle();
-      console.log(parseInt(priceAmount.textContent), parseInt(counterCount.textContent))
-
-      priceAmount.textContent = parseInt(priceAmount.textContent) * parseInt(counterCount.textContent);
+      priceAmount.innerHTML = initialPrice * parseInt(counterCount.innerHTML);
     }
   });
 
   addButton.addEventListener("click", () => {
-    let currentCount = parseInt(counterCount.textContent);
-    if (item.id !== "counter2" && currentCount < 2) {
-      counterCount.textContent = parseInt(counterCount.textContent) + 1;
+    let currentCount = parseInt(counterCount.innerHTML);
+    console.log(item);
+    if (counter.id !== "counter2" && currentCount < 2) {
+      counterCount.innerHTML = currentCount + 1;
       updateCounterStyle();
-    } else if (item.id === "counter2") {
-      counterCount.textContent = parseInt(counterCount.textContent) + 1;
+      priceAmount.innerHTML = initialPrice * parseInt(counterCount.innerHTML);
+    } else if (counter.id === "counter2") {
+      counterCount.innerHTML = currentCount + 1;
       updateCounterStyle();
+      priceAmount.innerHTML = initialPrice * parseInt(counterCount.innerHTML);
     }
-    console.log(parseInt(priceAmount.textContent), parseInt(counterCount.textContent))
-    priceAmount.textContent = parseInt(priceAmount.textContent) * parseInt(counterCount.textContent);
   });
 
   function updateCounterStyle() {

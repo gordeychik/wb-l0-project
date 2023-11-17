@@ -180,7 +180,12 @@
                   </div>
                   <div class="orderItem__price">
                     <div class="orderItem__priceWrapper">
-                      <div class="orderItem__priceWrapperCash">522</div>
+                      <div
+                        class="orderItem__priceWrapperCash"
+                        data-initialPrice="522"
+                      >
+                        522
+                      </div>
                       <div class="orderItem__priceWrapperCurrency">сом</div>
                     </div>
                     <div class="orderItem__priceDiscount">
@@ -295,7 +300,12 @@
                   </div>
                   <div class="orderItem__price">
                     <div class="orderItem__priceWrapper">
-                      <div class="orderItem__priceWrapperCash">2 100 047</div>
+                      <div
+                        class="orderItem__priceWrapperCash"
+                        data-initialPrice="10500"
+                      >
+                        2100000
+                      </div>
                       <div class="orderItem__priceWrapperCurrency">сом</div>
                     </div>
                     <div class="orderItem__priceDiscount tooltip__container">
@@ -404,7 +414,12 @@
                   </div>
                   <div class="orderItem__price">
                     <div class="orderItem__priceWrapper">
-                      <div class="orderItem__priceWrapperCash">494</div>
+                      <div
+                        class="orderItem__priceWrapperCash"
+                        data-initialPrice="494"
+                      >
+                        494
+                      </div>
                       <div class="orderItem__priceWrapperCurrency">сом</div>
                     </div>
                     <div class="orderItem__priceDiscount">
@@ -1173,8 +1188,9 @@
                 <div class="total__title">
                   <p>Итого</p>
                 </div>
-                <div class="total__title" id="totalPrice">
-                  <p>2 101 063 сом</p>
+                <div class="total__title">
+                  <span id="totalPrice">0</span>
+                  <span>сом</span>
                 </div>
               </div>
               <div class="total__products">
@@ -1296,5 +1312,4 @@
   <script src="favorite.js"></script>
   <script src="counter.js"></script>
   <script src="modalPay.js"></script>
-  <script src="priceCounter.js"></script>
 </html>
