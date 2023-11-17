@@ -1,8 +1,26 @@
 const chooseAll = document.getElementById("chooseAll");
 const products = document.querySelector(".cart__cartItems");
 const checkboxes = products.getElementsByClassName("checkbox");
-const totalPrice = document.getElementById('totalPrice').getElementsByTagName('p')[0];
-const cartItems = products.querySelectorAll('.cartItem');
+const totalPrice = document.getElementById("totalPrice");
+const cartItems = products.querySelectorAll(".cartItem");
+
+let total = 0;
+
+const sumTotalPrice = () => {
+  cartItems.forEach((item) => {
+    console.log(item.querySelector(".checkbox").checked);
+    if (item.querySelector(".checkbox").checked) {
+      total += parseInt(
+        item
+          .querySelector(".orderItem__priceWrapperCash")
+          .innerHTML.replaceAll(" ", "")
+      );
+    }
+  });
+
+  totalPrice.innerHTML = total;
+  total = 0;
+};
 
 chooseAll.addEventListener("click", () => {
   if (chooseAll.checked === true) {
@@ -14,17 +32,7 @@ chooseAll.addEventListener("click", () => {
       item.checked = false;
     }
   }
-  let total = 0;
-  cartItems.forEach((item) => {
-    if (item.querySelector('.checkbox').checked) {
-      const prevPrice = parseInt(totalPrice.innerHTML.split(' ').join(''));
-      const a = item.querySelector('.orderItem__priceWrapperCash').innerHTML;
-      console.log(a.replace(/ /g,''));
-      total = prevPrice + parseInt(item.querySelector('.orderItem__priceWrapperCash').innerHTML.split(' ').join(''));
-      
-    }
-  })
-  totalPrice.innerHTML = total;
+  sumTotalPrice();
 });
 
 products.addEventListener("click", (event) => {
@@ -40,5 +48,7 @@ products.addEventListener("click", (event) => {
     } else {
       chooseAll.checked = false;
     }
+
+    sumTotalPrice();
   }
 });
