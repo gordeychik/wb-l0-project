@@ -3,12 +3,13 @@ const products = document.querySelector(".cart__cartItems");
 const checkboxes = products.getElementsByClassName("checkbox");
 const totalPrice = document.getElementById("totalPrice");
 const cartItems = products.querySelectorAll(".cartItem");
+const buttonOrder = document.querySelector('.button__order');
+const instantPayCheckbox = document.getElementById('instantPay');
 
 let total = 0;
 
 const sumTotalPrice = () => {
   cartItems.forEach((item) => {
-    console.log(item.querySelector(".checkbox").checked);
     if (item.querySelector(".checkbox").checked) {
       total += parseInt(
         item
@@ -23,7 +24,7 @@ const sumTotalPrice = () => {
 };
 
 chooseAll.addEventListener("click", () => {
-  if (chooseAll.checked === true) {
+  if (chooseAll.checked) {
     for (let item of checkboxes) {
       item.checked = true;
     }
@@ -39,7 +40,7 @@ products.addEventListener("click", (event) => {
   if (event.target.type === "checkbox") {
     let checkedCount = 0;
     for (let item of checkboxes) {
-      if (item.checked === true) {
+      if (item.checked) {
         checkedCount++;
       }
     }
@@ -52,3 +53,11 @@ products.addEventListener("click", (event) => {
     sumTotalPrice();
   }
 });
+
+instantPayCheckbox.addEventListener('click', () => {
+  if(instantPayCheckbox.checked) {
+    buttonOrder.textContent = `Оплатить ${totalPrice.innerHTML} сом`
+  } else {
+    buttonOrder.textContent = 'Заказать';
+  }
+})
