@@ -8,8 +8,12 @@ function accord() {
   if (content.closest(".cart__cartItems--close")) {
     content.style.maxHeight = content.scrollHeight + "px";
     contentParent.classList.remove("cart__cartItems--close");
+    document.querySelector('.checkbox__wrapper').style.display='block';
+    document.querySelector('.accordion--close').style.display='none';
   } else {
     content.style.maxHeight = 0;
+    document.querySelector('.checkbox__wrapper').style.display='none';
+    document.querySelector('.accordion--close').style.display='block';
     contentParent.classList.add("cart__cartItems--close");
   }
 }
