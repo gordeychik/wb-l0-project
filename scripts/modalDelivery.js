@@ -10,8 +10,14 @@ const radioButtons = document.querySelectorAll(".modalAdress__radio");
 const adress = document.querySelector(".infoChanged__address");
 let deliveryLocation = null;
 const chooseLocation = document.querySelector('.modalAdress__btn')
+const pointIcon = document.getElementById('pointIcon')
+const adressPrice = document.querySelector('.delivery__address');
 
 titleButton.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+pointIcon.addEventListener("click", () => {
   modal.style.display = "flex";
 });
 
@@ -59,6 +65,8 @@ radioButtons.forEach((item) => {
 });
 
 chooseLocation.addEventListener('click', () => {
+  adressPrice.innerHTML = '';
+  adressPrice.innerHTML = deliveryLocation.innerHTML;
   adress.innerHTML = "";
   adress.appendChild(deliveryLocation);
   modal.style.display = "none";

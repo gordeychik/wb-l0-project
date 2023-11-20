@@ -3,20 +3,21 @@ const modalPay = document.getElementById("myModal");
 const closeBtn = document.getElementById("closeBtn");
 const modalText = document.getElementById("modalText");
 const chooseBtn = document.getElementsByClassName("modal__btn");
-const deliveryIcon = document.querySelector(".delivery__paragraphIcon");
+const deliveryIcon = document.getElementById("payIcon");
 const modalRadioButtons = document.querySelectorAll(".modalRadio");
 const choosePaymentBtn = document.querySelector(".modal__btn");
 const cardInfo = document.querySelector(".cartPayment__wrapper");
+const cardInfoPrice = document.querySelector(".pay__cardWrapper");
 let paymentSystem = null;
 
-cartTitle.addEventListener("click", (event) => {
-  if (event.target.classList.contains("cartPayment__titleButton")) {
+deliveryIcon.addEventListener("click", (event) => {
+  if (event.target.classList.contains("pay__icon")) {
     modalPay.style.display = "flex";
   }
 });
 
-deliveryIcon.addEventListener("click", (event) => {
-  if (event.target.classList.contains("delivery__paragraphIcon")) {
+cartTitle.addEventListener("click", (event) => {
+  if (event.target.classList.contains("cartPayment__titleButton")) {
     modalPay.style.display = "flex";
   }
 });
@@ -44,6 +45,8 @@ modalRadioButtons.forEach((item) => {
 });
 
 choosePaymentBtn.addEventListener("click", () => {
+  cardInfoPrice.innerHTML = "";
+  cardInfoPrice.innerHTML = paymentSystem.innerHTML;
   cardInfo.innerHTML = "";
   cardInfo.appendChild(paymentSystem);
   modalPay.style.display = "none";
